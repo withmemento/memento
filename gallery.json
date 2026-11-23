@@ -1,0 +1,417 @@
+[
+  {
+    "image": "images/gallery/curtain-solo-02.webp",
+    "categories": [
+      "solo"
+    ],
+    "look": "original",
+    "background": "curtain",
+    "format": "single",
+    "show": true,
+    "w": 1600,
+    "h": 1066
+  },
+  {
+    "image": "images/gallery/strip-grid-colour.webp",
+    "categories": [
+      "solo"
+    ],
+    "look": "original",
+    "background": "none",
+    "format": "strip",
+    "show": true,
+    "w": 1280,
+    "h": 1600
+  },
+  {
+    "image": "images/gallery/stars-couple.webp",
+    "categories": [
+      "couples"
+    ],
+    "look": "original",
+    "background": "stars",
+    "format": "single",
+    "show": true,
+    "w": 1600,
+    "h": 1066
+  },
+  {
+    "image": "images/gallery/marble-wings.webp",
+    "categories": [
+      "solo"
+    ],
+    "look": "original",
+    "background": "marble",
+    "format": "single",
+    "show": true,
+    "w": 1600,
+    "h": 1066
+  },
+  {
+    "image": "images/gallery/curtain-bw-couple.webp",
+    "categories": [
+      "couples"
+    ],
+    "look": "vintage",
+    "background": "curtain",
+    "format": "single",
+    "show": true,
+    "w": 1600,
+    "h": 1066
+  },
+  {
+    "image": "images/gallery/strip-vintage-group.webp",
+    "categories": [
+      "groups"
+    ],
+    "look": "vintage",
+    "background": "none",
+    "format": "strip",
+    "show": true,
+    "w": 1067,
+    "h": 1600
+  },
+  {
+    "image": "images/gallery/stars-bw-duo.webp",
+    "categories": [
+      "friends"
+    ],
+    "look": "vintage",
+    "background": "stars",
+    "format": "single",
+    "show": true,
+    "w": 1600,
+    "h": 1066
+  },
+  {
+    "image": "images/gallery/curtain-graduation.webp",
+    "categories": [
+      "special"
+    ],
+    "look": "original",
+    "background": "curtain",
+    "format": "single",
+    "show": true,
+    "w": 1600,
+    "h": 1066
+  },
+  {
+    "image": "images/gallery/stars-solo-03.webp",
+    "categories": [
+      "solo"
+    ],
+    "look": "original",
+    "background": "stars",
+    "format": "single",
+    "show": true,
+    "w": 1600,
+    "h": 1066
+  },
+  {
+    "image": "images/gallery/marble-couple.webp",
+    "categories": [
+      "couples"
+    ],
+    "look": "original",
+    "background": "marble",
+    "format": "single",
+    "show": true,
+    "w": 1600,
+    "h": 1066
+  },
+  {
+    "image": "images/gallery/strip-curtain-dalmatian.webp",
+    "categories": [
+      "groups",
+      "friends"
+    ],
+    "look": "original",
+    "background": "curtain",
+    "format": "strip",
+    "show": true,
+    "w": 1067,
+    "h": 1600
+  },
+  {
+    "image": "images/gallery/event-group.webp",
+    "categories": [
+      "groups",
+      "special"
+    ],
+    "look": "original",
+    "background": "custom",
+    "format": "single",
+    "show": true,
+    "w": 1600,
+    "h": 1066
+  },
+  {
+    "image": "images/gallery/stars-bw-solo.webp",
+    "categories": [
+      "solo"
+    ],
+    "look": "vintage",
+    "background": "stars",
+    "format": "single",
+    "show": true,
+    "w": 1600,
+    "h": 1066
+  },
+  {
+    "image": "images/gallery/curtain-group-tiaras.webp",
+    "categories": [
+      "groups",
+      "special"
+    ],
+    "look": "original",
+    "background": "curtain",
+    "format": "single",
+    "show": true,
+    "w": 1600,
+    "h": 1066
+  },
+  {
+    "image": "images/gallery/marble-bouquet.webp",
+    "categories": [
+      "solo",
+      "special"
+    ],
+    "look": "original",
+    "background": "marble",
+    "format": "single",
+    "show": true,
+    "w": 1600,
+    "h": 1066
+  },
+  {
+    "image": "images/gallery/strip-grid-bw.webp",
+    "categories": [
+      "solo"
+    ],
+    "look": "vintage",
+    "background": "none",
+    "format": "strip",
+    "show": true,
+    "w": 1280,
+    "h": 1600
+  },
+  {
+    "image": "images/gallery/curtain-couple-warm.webp",
+    "categories": [
+      "couples"
+    ],
+    "look": "original",
+    "background": "curtain",
+    "format": "single",
+    "show": true,
+    "w": 1600,
+    "h": 1066
+  },
+  {
+    "image": "images/gallery/stars-solo-01.webp",
+    "categories": [
+      "solo"
+    ],
+    "look": "original",
+    "background": "stars",
+    "format": "single",
+    "show": true,
+    "w": 1600,
+    "h": 1066
+  },
+  {
+    "image": "images/gallery/marble-group.webp",
+    "categories": [
+      "groups",
+      "friends"
+    ],
+    "look": "original",
+    "background": "marble",
+    "format": "single",
+    "show": true,
+    "w": 1600,
+    "h": 1066
+  },
+  {
+    "image": "images/gallery/strip-stars-solo.webp",
+    "categories": [
+      "solo"
+    ],
+    "look": "original",
+    "background": "stars",
+    "format": "strip",
+    "show": true,
+    "w": 1067,
+    "h": 1600
+  },
+  {
+    "image": "images/gallery/curtain-duo-01.webp",
+    "categories": [
+      "friends"
+    ],
+    "look": "original",
+    "background": "curtain",
+    "format": "single",
+    "show": true,
+    "w": 1600,
+    "h": 1066
+  },
+  {
+    "image": "images/gallery/marble-bw-duo.webp",
+    "categories": [
+      "couples"
+    ],
+    "look": "vintage",
+    "background": "marble",
+    "format": "single",
+    "show": true,
+    "w": 1600,
+    "h": 1066
+  },
+  {
+    "image": "images/gallery/stars-solo-02.webp",
+    "categories": [
+      "solo"
+    ],
+    "look": "original",
+    "background": "stars",
+    "format": "single",
+    "show": true,
+    "w": 1600,
+    "h": 1066
+  },
+  {
+    "image": "images/gallery/event-bw-group.webp",
+    "categories": [
+      "groups",
+      "special"
+    ],
+    "look": "vintage",
+    "background": "custom",
+    "format": "single",
+    "show": true,
+    "w": 1600,
+    "h": 1066
+  },
+  {
+    "image": "images/gallery/marble-wings-back.webp",
+    "categories": [
+      "solo"
+    ],
+    "look": "original",
+    "background": "marble",
+    "format": "single",
+    "show": true,
+    "w": 1600,
+    "h": 1066
+  },
+  {
+    "image": "images/gallery/strip-duo.webp",
+    "categories": [
+      "friends"
+    ],
+    "look": "original",
+    "background": "none",
+    "format": "strip",
+    "show": true,
+    "w": 1067,
+    "h": 1600
+  },
+  {
+    "image": "images/gallery/curtain-couple.webp",
+    "categories": [
+      "couples"
+    ],
+    "look": "original",
+    "background": "curtain",
+    "format": "single",
+    "show": true,
+    "w": 1600,
+    "h": 1066
+  },
+  {
+    "image": "images/gallery/marble-duo-fan.webp",
+    "categories": [
+      "friends"
+    ],
+    "look": "original",
+    "background": "marble",
+    "format": "single",
+    "show": true,
+    "w": 1600,
+    "h": 1066
+  },
+  {
+    "image": "images/gallery/stars-solo-04.webp",
+    "categories": [
+      "solo"
+    ],
+    "look": "original",
+    "background": "stars",
+    "format": "single",
+    "show": true,
+    "w": 1600,
+    "h": 1066
+  },
+  {
+    "image": "images/gallery/group-01.webp",
+    "categories": [
+      "groups",
+      "friends"
+    ],
+    "look": "original",
+    "background": "none",
+    "format": "single",
+    "show": true,
+    "w": 1600,
+    "h": 1066
+  },
+  {
+    "image": "images/gallery/strip-curtain-group.webp",
+    "categories": [
+      "groups"
+    ],
+    "look": "original",
+    "background": "curtain",
+    "format": "strip",
+    "show": true,
+    "w": 1067,
+    "h": 1600
+  },
+  {
+    "image": "images/gallery/curtain-solo-01.webp",
+    "categories": [
+      "solo"
+    ],
+    "look": "original",
+    "background": "curtain",
+    "format": "single",
+    "show": true,
+    "w": 1600,
+    "h": 1066
+  },
+  {
+    "image": "images/gallery/marble-solo-01.webp",
+    "categories": [
+      "solo"
+    ],
+    "look": "original",
+    "background": "marble",
+    "format": "single",
+    "show": true,
+    "w": 1600,
+    "h": 1066
+  },
+  {
+    "image": "images/gallery/curtain-couple-warm-02.webp",
+    "categories": [
+      "couples"
+    ],
+    "look": "original",
+    "background": "curtain",
+    "format": "single",
+    "show": true,
+    "w": 1600,
+    "h": 1066
+  }
+]

@@ -1,0 +1,99 @@
+{
+  "seo": {
+    "title": "Memento — A photobooth archive of moments worth keeping",
+    "description": "Memento is an experience-driven photobooth in Malang, Indonesia. Vintage-inspired portraits, distinctive lighting and thoughtfully designed prints."
+  },
+  "hero": {
+    "metaLeft": "Vol. 01",
+    "metaCenter": "A photobooth archive",
+    "metaRight": "Malang, Indonesia",
+    "eyebrow": "An archive of people & light",
+    "title": "Some moments\ndeserve to *stay.*",
+    "lede": "Memento is a photobooth for the people you love and the versions of yourself you want to remember. Vintage at heart, made with modern light, printed to be kept.",
+    "button1": "Explore the archive",
+    "button2": "Step into the booth",
+    "images": [
+      { "image": "images/gallery/curtain-solo-02.webp", "caption": "Fig. 01 — Red Curtain" },
+      { "image": "images/gallery/strip-stars-solo.webp", "caption": "Fig. 02 — The strip" },
+      { "image": "images/gallery/marble-wings.webp", "caption": "Fig. 03 — White Marble" },
+      { "image": "images/gallery/curtain-bw-couple.webp", "caption": "Fig. 04 — Vintage" }
+    ],
+    "ticker": ["Solo", "Couples", "Best Friends", "Groups", "Special Moments"]
+  },
+  "about": {
+    "label": "About Memento",
+    "title": "Not just a photograph.\n*Something to keep.*",
+    "paragraph1": "We started Memento because a photograph should do more than prove you were there. It should bring the evening back: who stood closest, who laughed first, how the light fell across your face.",
+    "paragraph2": "So we built a booth around people. A warm, private space where you can stop performing and simply be with each other, then walk away holding something real.",
+    "image1": "images/gallery/curtain-couple-warm.webp",
+    "image2": "images/gallery/stars-bw-duo.webp",
+    "principles": [
+      { "title": "People first", "text": "We celebrate genuine moments, never forced poses." },
+      { "title": "Personal by design", "text": "Your face, your people, your look. Photography that feels like yours." },
+      { "title": "The smallest details", "text": "Light, image quality, the edge of every frame: considered, then considered again." },
+      { "title": "Made to revisit", "text": "Prints for the wallet and the wall. Files to share. Moments to return to." }
+    ]
+  },
+  "archive": {
+    "label": "The Archive",
+    "title": "Faces, friends &\n*everything in between.*",
+    "intro": "Real results from the Memento booth. Filter by who was in the frame, or by the look they chose."
+  },
+  "frame": {
+    "label": "Find Your Frame",
+    "title": "Your moment,\n*your way.*",
+    "intro": "Every session begins with two choices: the look of your photograph and the world you step into. Explore them here.",
+    "lookTitle": "Choose how your\nphotograph feels.",
+    "backdropTitle": "Choose the world\nyou step into."
+  },
+  "booth": {
+    "label": "The Memento Experience",
+    "title": "An experience\nworth *stepping into.*",
+    "intro": "Draw the curtain, find the light, forget the world for a minute. The rest is yours to keep.",
+    "photos": [
+      { "image": "images/booth/booth-curtain.webp", "caption": "The booth, curtain drawn." },
+      { "image": "images/booth/booth-neon.webp", "caption": "Look for the red glow." },
+      { "image": "images/booth/print-slot.webp", "caption": "Prints, still warm." },
+      { "image": "images/booth/strip-wall.webp", "caption": "The wall of everyone who came before." }
+    ],
+    "features": [
+      { "title": "High-quality photography", "text": "Professional-grade capture with crisp detail and honest colour, every single frame." },
+      { "title": "Distinctive lighting", "text": "Light shaped to flatter and to feel like a mood, not a flash in the face." },
+      { "title": "Curated frames", "text": "Print layouts designed with the same care as the photographs inside them." },
+      { "title": "Physical prints", "text": "Something to hold, to tuck into a wallet, to pin above a desk." },
+      { "title": "Digital keepsakes", "text": "Your photographs to save and share, long after the night ends." },
+      { "title": "Comfortable & easy", "text": "A private, unhurried space. Step in, settle in, be yourselves." }
+    ]
+  },
+  "prints": {
+    "label": "The Prints",
+    "title": "Small enough to carry.\n*Made to last.*",
+    "intro": "Every Memento print is composed like a page from a photo book: generous borders, balanced frames and our signature quietly in the corner.",
+    "image": "images/gallery/prints-flatlay.webp",
+    "detailImage": "images/booth/print-in-hand.webp",
+    "detailCaption": "Detail — the strip, out in the world."
+  },
+  "locations": {
+    "label": "Find Memento",
+    "title": "Where to *find us.*",
+    "intro": "Follow the red glow. New locations are added here as they open."
+  },
+  "partner": {
+    "label": "Work With Memento",
+    "title": "Let’s make room\nfor *more memories.*",
+    "intro": "We partner with cafés, restaurants, lifestyle spaces, brands and event organisers who care about how people feel in their space. A Memento booth gives guests a reason to stay longer, and something to take home that carries your name.",
+    "points": [
+      { "title": "For venues", "text": "A permanent booth that becomes part of your space and your guests’ routine." },
+      { "title": "For brands", "text": "Custom backdrops and frames that put your story into every print." },
+      { "title": "For events", "text": "A pop-up booth for launches, celebrations and private gatherings." }
+    ],
+    "button1": "Start a conversation",
+    "button2": "Email us",
+    "whatsappMessage": "Hi Memento, I'd like to discuss a partnership.",
+    "image": "images/booth/popup-guest.webp",
+    "caption": "Memento pop-up, on location."
+  },
+  "footer": {
+    "title": "Keep the moments *that matter.*"
+  }
+}

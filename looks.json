@@ -1,0 +1,26 @@
+[
+  {
+    "id": "original",
+    "label": "Original",
+    "short": "True to the light",
+    "description": "Colour exactly as the booth sees it: clean skin tones, crisp detail and the warmth of the light you stood in. Nothing added, nothing taken away.",
+    "preview": "images/gallery/strip-grid-colour.webp",
+    "show": true
+  },
+  {
+    "id": "vintage",
+    "label": "Vintage",
+    "short": "A softer, older warmth",
+    "description": "Faded colour and a gentle cast that feels pulled from an old family album. Made today, yet already nostalgic.",
+    "preview": "images/gallery/strip-grid-bw.webp",
+    "show": true
+  },
+  {
+    "id": "bw",
+    "label": "Black & White",
+    "short": "Only what matters",
+    "description": "Monochrome with deep contrast and a soft tonal glow. Colour falls away and leaves the expression, the gesture, the person.",
+    "preview": "",
+    "show": false
+  }
+]

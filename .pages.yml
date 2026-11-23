@@ -1,0 +1,295 @@
+# Pages CMS — panel admin website Memento
+# Buka https://app.pagescms.org, login pakai GitHub, pilih repository ini.
+
+media:
+  input: images
+  output: images
+  extensions: [jpg, jpeg, png, webp]
+
+content:
+  # ---------------------------------------------------------------- GALERI
+  - name: gallery
+    label: "Galeri (Archive)"
+    type: file
+    path: content/gallery.json
+    format: json
+    list: true
+    fields:
+      - name: image
+        label: Foto
+        type: image
+        required: true
+      - name: categories
+        label: Kategori momen
+        type: select
+        options:
+          multiple: true
+          values:
+            - name: solo
+              label: Solo
+            - name: couples
+              label: Couples
+            - name: friends
+              label: Best Friends
+            - name: groups
+              label: Groups
+            - name: special
+              label: Special Moments
+      - name: look
+        label: Look / filter foto
+        type: select
+        options:
+          values:
+            - name: original
+              label: Original
+            - name: vintage
+              label: Vintage
+            - name: bw
+              label: Black & White
+      - name: background
+        label: Backdrop
+        type: select
+        options:
+          values:
+            - name: curtain
+              label: Red Curtain
+            - name: marble
+              label: White Marble
+            - name: stars
+              label: Stars
+            - name: custom
+              label: Custom for Events
+            - name: none
+              label: (tidak ada / lainnya)
+      - name: format
+        label: Format
+        type: select
+        options:
+          values:
+            - name: single
+              label: Foto tunggal
+            - name: strip
+              label: Strip / print
+      - name: show
+        label: Tampilkan di website
+        type: boolean
+        default: true
+      - name: w
+        label: Lebar asli (px) — boleh dikosongkan
+        type: number
+      - name: h
+        label: Tinggi asli (px) — boleh dikosongkan
+        type: number
+
+  # ---------------------------------------------------------------- TEKS
+  - name: text
+    label: "Teks & foto per bagian"
+    type: file
+    path: content/text.json
+    format: json
+    fields:
+      - name: seo
+        label: Judul tab & deskripsi Google
+        type: object
+        fields:
+          - { name: title, label: Judul tab browser, type: string }
+          - { name: description, label: Deskripsi di Google, type: text }
+      - name: hero
+        label: "Bagian 1 — Hero (layar pertama)"
+        type: object
+        fields:
+          - { name: metaLeft, label: Teks kecil kiri atas, type: string }
+          - { name: metaCenter, label: Teks kecil tengah atas, type: string }
+          - { name: metaRight, label: Teks kecil kanan atas, type: string }
+          - { name: eyebrow, label: Teks kecil di atas judul, type: string }
+          - { name: title, label: "Judul besar (*kata* = miring merah, Enter = baris baru)", type: text }
+          - { name: lede, label: Paragraf pembuka, type: text }
+          - { name: button1, label: Tombol merah, type: string }
+          - { name: button2, label: Tombol garis, type: string }
+          - name: images
+            label: 4 foto kolase
+            type: object
+            list: { min: 4, max: 4 }
+            fields:
+              - { name: image, label: Foto, type: image }
+              - { name: caption, label: Keterangan, type: string }
+          - { name: ticker, label: Kata-kata di garis bawah hero, type: string, list: true }
+      - name: about
+        label: "Bagian 2 — About"
+        type: object
+        fields:
+          - { name: label, label: Label kecil, type: string }
+          - { name: title, label: "Judul (*kata* = miring merah)", type: text }
+          - { name: paragraph1, label: Paragraf 1, type: text }
+          - { name: paragraph2, label: Paragraf 2, type: text }
+          - { name: image1, label: Foto besar, type: image }
+          - { name: image2, label: Foto kecil, type: image }
+          - name: principles
+            label: Prinsip (i, ii, iii, iv)
+            type: object
+            list: true
+            fields:
+              - { name: title, label: Judul, type: string }
+              - { name: text, label: Teks, type: text }
+      - name: archive
+        label: "Bagian 3 — Archive (judul galeri)"
+        type: object
+        fields:
+          - { name: label, label: Label kecil, type: string }
+          - { name: title, label: "Judul (*kata* = miring merah)", type: text }
+          - { name: intro, label: Teks pengantar, type: text }
+      - name: frame
+        label: "Bagian 4 — Find Your Frame"
+        type: object
+        fields:
+          - { name: label, label: Label kecil, type: string }
+          - { name: title, label: "Judul (*kata* = miring merah)", type: text }
+          - { name: intro, label: Teks pengantar, type: text }
+          - { name: lookTitle, label: Judul pemilih look, type: text }
+          - { name: backdropTitle, label: Judul pemilih backdrop, type: text }
+      - name: booth
+        label: "Bagian 5 — The Booth"
+        type: object
+        fields:
+          - { name: label, label: Label kecil, type: string }
+          - { name: title, label: "Judul (*kata* = miring merah)", type: text }
+          - { name: intro, label: Teks pengantar, type: text }
+          - name: photos
+            label: 4 foto booth
+            type: object
+            list: { min: 4, max: 4 }
+            fields:
+              - { name: image, label: Foto, type: image }
+              - { name: caption, label: Keterangan, type: string }
+          - name: features
+            label: Keunggulan (01–06)
+            type: object
+            list: true
+            fields:
+              - { name: title, label: Judul, type: string }
+              - { name: text, label: Teks, type: text }
+      - name: prints
+        label: "Bagian 6 — Prints"
+        type: object
+        fields:
+          - { name: label, label: Label kecil, type: string }
+          - { name: title, label: "Judul (*kata* = miring merah)", type: text }
+          - { name: intro, label: Teks pengantar, type: text }
+          - { name: image, label: Foto besar, type: image }
+          - { name: detailImage, label: Foto detail, type: image }
+          - { name: detailCaption, label: Keterangan foto detail, type: string }
+      - name: locations
+        label: "Bagian 7 — Lokasi (judul)"
+        type: object
+        fields:
+          - { name: label, label: Label kecil, type: string }
+          - { name: title, label: "Judul (*kata* = miring merah)", type: text }
+          - { name: intro, label: Teks pengantar, type: text }
+      - name: partner
+        label: "Bagian 8 — Partnership"
+        type: object
+        fields:
+          - { name: label, label: Label kecil, type: string }
+          - { name: title, label: "Judul (*kata* = miring merah)", type: text }
+          - { name: intro, label: Paragraf, type: text }
+          - name: points
+            label: Poin kerja sama
+            type: object
+            list: true
+            fields:
+              - { name: title, label: Judul, type: string }
+              - { name: text, label: Teks, type: text }
+          - { name: button1, label: Tombol WhatsApp, type: string }
+          - { name: button2, label: Tombol email, type: string }
+          - { name: whatsappMessage, label: Pesan otomatis WhatsApp, type: string }
+          - { name: image, label: Foto, type: image }
+          - { name: caption, label: Keterangan foto, type: string }
+      - name: footer
+        label: "Footer"
+        type: object
+        fields:
+          - { name: title, label: "Kalimat penutup (*kata* = miring)", type: text }
+
+  # ---------------------------------------------------------------- LOOK & BACKDROP
+  - name: looks
+    label: "Find Your Frame — Look"
+    type: file
+    path: content/looks.json
+    format: json
+    list: true
+    fields:
+      - { name: id, label: "ID (jangan diubah: original / vintage / bw)", type: string }
+      - { name: label, label: Nama, type: string }
+      - { name: short, label: Tagline singkat, type: string }
+      - { name: description, label: Deskripsi, type: text }
+      - { name: preview, label: Foto preview, type: image }
+      - { name: show, label: Tampilkan, type: boolean, default: true }
+
+  - name: backgrounds
+    label: "Find Your Frame — Backdrop"
+    type: file
+    path: content/backgrounds.json
+    format: json
+    list: true
+    fields:
+      - { name: id, label: "ID (jangan diubah: curtain / marble / stars / custom)", type: string }
+      - { name: label, label: Nama, type: string }
+      - { name: short, label: Tagline singkat, type: string }
+      - { name: description, label: Deskripsi, type: text }
+      - { name: preview, label: Foto preview besar, type: image }
+      - { name: thumb, label: Foto kecil (tombol), type: image }
+      - { name: show, label: Tampilkan, type: boolean, default: true }
+
+  # ---------------------------------------------------------------- PRINTS
+  - name: prints
+    label: "Prints / frame"
+    type: file
+    path: content/prints.json
+    format: json
+    list: true
+    fields:
+      - { name: image, label: Foto print, type: image }
+      - { name: name, label: Nama frame, type: string }
+      - { name: note, label: Keterangan, type: text }
+      - { name: show, label: Tampilkan, type: boolean, default: true }
+
+  # ---------------------------------------------------------------- LOKASI
+  - name: locations
+    label: "Lokasi cabang"
+    type: file
+    path: content/locations.json
+    format: json
+    list: true
+    fields:
+      - { name: name, label: Nama lokasi, type: string }
+      - { name: venue, label: Nama tempat, type: string }
+      - { name: city, label: Kota, type: string }
+      - { name: address, label: Alamat lengkap, type: text }
+      - { name: hours, label: Jam operasional, type: string }
+      - { name: maps, label: Link Google Maps, type: string }
+      - { name: button, label: Teks tombol, type: string }
+      - { name: image, label: Foto kecil, type: image }
+      - { name: show, label: Tampilkan, type: boolean, default: true }
+
+  # ---------------------------------------------------------------- KONTAK
+  - name: settings
+    label: "Kontak & kategori"
+    type: file
+    path: content/settings.json
+    format: json
+    fields:
+      - { name: email, label: Email, type: string }
+      - { name: whatsappDisplay, label: "WhatsApp (tampilan, mis. +62 821-...)", type: string }
+      - { name: whatsappNumber, label: "WhatsApp (angka saja, mis. 628216...)", type: string }
+      - { name: whatsappMessage, label: Pesan otomatis WhatsApp, type: string }
+      - { name: person, label: Nama kontak, type: string }
+      - { name: instagram, label: Link Instagram, type: string }
+      - { name: tiktok, label: Link TikTok, type: string }
+      - { name: city, label: Kota (footer), type: string }
+      - name: categories
+        label: "Nama kategori di filter galeri (ID jangan diubah)"
+        type: object
+        list: true
+        fields:
+          - { name: id, label: ID, type: string }
+          - { name: label, label: Nama tampil, type: string }
