@@ -6,8 +6,8 @@
 @font-face { font-family: "Caslon"; src: url("../fonts/LibreCaslonText-Regular.woff2") format("woff2"); font-weight: 400; font-style: normal; font-display: swap; }
 @font-face { font-family: "Caslon"; src: url("../fonts/LibreCaslonText-Italic.woff2") format("woff2"); font-weight: 400; font-style: italic; font-display: swap; }
 @font-face { font-family: "Caslon"; src: url("../fonts/LibreCaslonText-Bold.woff2") format("woff2"); font-weight: 700; font-style: normal; font-display: swap; }
-/* Anaktoria: drop Anaktoria.woff2 into /fonts to activate. Falls back to Caslon. */
-@font-face { font-family: "Anaktoria"; src: url("../fonts/Anaktoria.woff2") format("woff2"), local("Anaktoria"); font-display: swap; }
+/* Anaktoria: optional. To activate, add fonts/Anaktoria.woff2 and list it in src before local(). Falls back to Caslon. */
+@font-face { font-family: "Anaktoria"; src: local("Anaktoria"); font-display: swap; }
 
 :root {
   --red: #A20100;
