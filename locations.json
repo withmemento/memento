@@ -1,35 +1,31 @@
 [
   {
-    "name": "Memento at Roketto",
-    "venue": "Roketto Coffee & Co",
-    "city": "Malang",
-    "address": "[Full address — to be confirmed]",
-    "hours": "[Operating hours — to be confirmed]",
+    "name": "memento at roketto",
+    "venue": "roketto coffee & co",
+    "city": "malang",
+    "address": "jalan kendalsari no. 6, malang",
+    "hours": "12:00 pm – 1:00 am",
     "maps": "https://share.google/fo2dQOInWLVYiA6wc",
     "image": "images/booth/booth-neon.webp",
-    "button": "Open in Maps",
+    "button": "open in maps",
     "show": true
   },
   {
-    "name": "Memento at Nakoa",
-    "venue": "Nakoa",
-    "city": "Malang",
-    "address": "[Full address — to be confirmed]",
-    "hours": "[Operating hours — to be confirmed]",
+    "name": "memento at nakoa",
+    "venue": "nakoa",
+    "city": "malang",
+    "address": "jalan mayjen panjaitan no. 75, malang",
+    "hours": "10:00 am – 12:00 am",
     "maps": "https://share.google/drkRog9YK44guba0L",
     "image": "images/booth/booth-venue.webp",
-    "button": "Open in Maps",
+    "button": "open in maps",
     "show": true
   },
   {
-    "name": "Pop-ups & private events",
-    "venue": "Wherever the occasion is",
-    "city": "By arrangement",
-    "address": "Our portable booth travels to celebrations, launches and gatherings.",
-    "hours": "Booked in advance",
+    "name": "pop up and private events",
     "maps": "",
     "image": "images/booth/popup-booth.webp",
-    "button": "Book a pop-up",
+    "button": "book a pop-up",
     "show": true
   }
 ]
