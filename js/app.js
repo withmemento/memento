@@ -10,6 +10,23 @@
   const $$ = (s, el = document) => Array.from(el.querySelectorAll(s));
   const reduceMotion = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
 
+  /* ---------- intro: the logo is typed out with a blinking cursor ---------- */
+  const veilDone = new Promise((resolve) => {
+    const text = $(".veil__text"), cursor = $(".veil__cursor");
+    const word = "memento";
+    if (!text || !cursor) return resolve();
+    if (reduceMotion) { text.textContent = word; return setTimeout(resolve, 600); }
+    let i = 0;
+    cursor.classList.add("is-typing");              // solid while typing
+    const next = () => {
+      text.textContent = word.slice(0, ++i);
+      if (i < word.length) return setTimeout(next, 95 + Math.random() * 70);
+      cursor.classList.remove("is-typing");          // then it blinks
+      setTimeout(resolve, 900);                      // hold, so the cursor blinks about twice
+    };
+    setTimeout(next, 350);
+  });
+
   const esc = (s) => String(s).replace(/[&<>"]/g, (c) => ({ "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;" }[c]));
   /* image paths: "images/gallery/name.webp" (from CMS may start with "/") */
   const norm = (p) => String(p || "").replace(/^\/+/, "");
@@ -389,7 +406,7 @@
 
   async function boot() {
     try { await loadContent(); }
-    catch (e) { console.error("Content failed to load", e); document.body.classList.remove("is-loading"); return; }
+    catch (e) { console.error("Content failed to load", e); veilDone.then(() => document.body.classList.remove("is-loading")); return; }
     hydrateStatic();
     bindContact();
     initHeader();
@@ -400,8 +417,8 @@
     initPrints();
     initLocations();
     initReveal();
-    const heroImg = $(".hc--a img");
-    const lift = () => document.body.classList.remove("is-loading");
+    const heroImg = $(".hc img");
+    const lift = () => veilDone.then(() => document.body.classList.remove("is-loading"));
     if (!heroImg || heroImg.complete) setTimeout(lift, 500);
     else { heroImg.addEventListener("load", () => setTimeout(lift, 350), { once: true }); }
     setTimeout(lift, 2200); // never hold the page hostage
