@@ -1,26 +1,22 @@
 [
   {
     "image": "images/gallery/strip-grid-colour.webp",
-    "name": "The Four-Frame Grid",
-    "note": "Four poses, one print. A portrait sheet with room to breathe.",
+    "name": "the four-frame grid",
     "show": true
   },
   {
     "image": "images/gallery/strip-stars-solo.webp",
-    "name": "The Double Strip",
-    "note": "Two classic strips side by side: one to keep, one to give away.",
+    "name": "the double strip",
     "show": true
   },
   {
     "image": "images/gallery/strip-curtain-dalmatian.webp",
-    "name": "The Framed Trio",
-    "note": "Three frames set inside a designed border, finished with the signature.",
+    "name": "the framed trio",
     "show": true
   },
   {
     "image": "images/gallery/strip-duo.webp",
-    "name": "The Classic Black",
-    "note": "A dark border that lets every expression sit forward.",
+    "name": "the classic black",
     "show": true
   }
 ]
