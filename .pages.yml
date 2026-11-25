@@ -82,7 +82,6 @@ content:
         label: "Bagian 1 — Hero (layar pertama)"
         type: object
         fields:
-          - { name: eyebrow, label: Label "archives" di atas judul, type: string }
           - { name: title, label: "Judul besar (*kata* = miring merah, Enter = baris baru)", type: text }
           - { name: lede, label: Paragraf pembuka, type: text }
           - name: images
@@ -165,7 +164,6 @@ content:
           - { name: button1, label: Tombol WhatsApp, type: string }
           - { name: button2, label: Tombol email, type: string }
           - { name: whatsappMessage, label: Pesan otomatis WhatsApp, type: string }
-          - { name: image, label: Foto, type: image }
       - name: footer
         label: "Footer"
         type: object

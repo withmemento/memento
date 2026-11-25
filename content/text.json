@@ -4,7 +4,6 @@
     "description": "memento is an experience-driven photobooth in malang, indonesia. vintage-inspired portraits, distinctive lighting and thoughtfully designed prints."
   },
   "hero": {
-    "eyebrow": "archives",
     "title": "to be loved is to be *remembered.*",
     "lede": "memento are made for the people you love and the version of yourself you want to archive, forever.",
     "images": [
@@ -108,8 +107,7 @@
     ],
     "button1": "start a conversation",
     "button2": "email us",
-    "whatsappMessage": "Hi Memento, I'd like to discuss a partnership.",
-    "image": "images/booth/popup-guest.webp"
+    "whatsappMessage": "Hi Memento, I'd like to discuss a partnership."
   },
   "footer": {
     "title": "reach out and let's make your event or place *unforgettable.*"

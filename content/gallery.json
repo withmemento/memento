@@ -9,15 +9,6 @@
     "h": 1066
   },
   {
-    "image": "images/gallery/strip-grid-colour.webp",
-    "look": "original",
-    "background": "none",
-    "format": "strip",
-    "show": true,
-    "w": 1280,
-    "h": 1600
-  },
-  {
     "image": "images/gallery/stars-couple.webp",
     "look": "original",
     "background": "stars",
@@ -88,15 +79,6 @@
     "show": true,
     "w": 1600,
     "h": 1066
-  },
-  {
-    "image": "images/gallery/strip-curtain-dalmatian.webp",
-    "look": "original",
-    "background": "curtain",
-    "format": "strip",
-    "show": true,
-    "w": 1067,
-    "h": 1600
   },
   {
     "image": "images/gallery/event-group.webp",
@@ -171,15 +153,6 @@
     "h": 1066
   },
   {
-    "image": "images/gallery/strip-stars-solo.webp",
-    "look": "original",
-    "background": "stars",
-    "format": "strip",
-    "show": true,
-    "w": 1067,
-    "h": 1600
-  },
-  {
     "image": "images/gallery/curtain-duo-01.webp",
     "look": "original",
     "background": "curtain",
@@ -223,15 +196,6 @@
     "show": true,
     "w": 1600,
     "h": 1066
-  },
-  {
-    "image": "images/gallery/strip-duo.webp",
-    "look": "original",
-    "background": "none",
-    "format": "strip",
-    "show": true,
-    "w": 1067,
-    "h": 1600
   },
   {
     "image": "images/gallery/curtain-couple.webp",
