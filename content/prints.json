@@ -18,5 +18,20 @@
     "image": "images/gallery/strip-duo.webp",
     "name": "the classic black",
     "show": true
+  },
+  {
+    "image": "images/gallery/strip-curtain-group.webp",
+    "name": "the group frame",
+    "show": true
+  },
+  {
+    "image": "images/gallery/strip-vintage-group.webp",
+    "name": "the vintage group frame",
+    "show": true
+  },
+  {
+    "image": "images/gallery/strip-grid-bw.webp",
+    "name": "the black and white grid",
+    "show": true
   }
 ]

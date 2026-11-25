@@ -36,15 +36,6 @@
     "h": 1066
   },
   {
-    "image": "images/gallery/strip-vintage-group.webp",
-    "look": "vintage",
-    "background": "none",
-    "format": "strip",
-    "show": true,
-    "w": 1067,
-    "h": 1600
-  },
-  {
     "image": "images/gallery/stars-bw-duo.webp",
     "look": "vintage",
     "background": "stars",
@@ -115,15 +106,6 @@
     "show": true,
     "w": 1600,
     "h": 1066
-  },
-  {
-    "image": "images/gallery/strip-grid-bw.webp",
-    "look": "vintage",
-    "background": "none",
-    "format": "strip",
-    "show": true,
-    "w": 1280,
-    "h": 1600
   },
   {
     "image": "images/gallery/curtain-couple-warm.webp",
@@ -232,15 +214,6 @@
     "show": true,
     "w": 1600,
     "h": 1066
-  },
-  {
-    "image": "images/gallery/strip-curtain-group.webp",
-    "look": "original",
-    "background": "curtain",
-    "format": "strip",
-    "show": true,
-    "w": 1067,
-    "h": 1600
   },
   {
     "image": "images/gallery/curtain-solo-01.webp",
