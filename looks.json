@@ -1,25 +1,25 @@
 [
   {
     "id": "original",
-    "label": "Original",
-    "short": "True to the light",
-    "description": "Colour exactly as the booth sees it: clean skin tones, crisp detail and the warmth of the light you stood in. Nothing added, nothing taken away.",
+    "label": "original",
+    "short": "",
+    "description": "true to the light, colour exactly as the booth sees it, clean skin tones, crisp detail and the warmth of the light you stood in. nothing added, nothing taken away.",
     "preview": "images/gallery/strip-grid-colour.webp",
     "show": true
   },
   {
     "id": "vintage",
-    "label": "Vintage",
-    "short": "A softer, older warmth",
-    "description": "Faded colour and a gentle cast that feels pulled from an old family album. Made today, yet already nostalgic.",
+    "label": "vintage",
+    "short": "old photograph, faded color",
+    "description": "faded colour and a gentle cast that feels pulled from an old family album. made today, yet already nostalgic.",
     "preview": "images/gallery/strip-grid-bw.webp",
     "show": true
   },
   {
     "id": "bw",
-    "label": "Black & White",
-    "short": "Only what matters",
-    "description": "Monochrome with deep contrast and a soft tonal glow. Colour falls away and leaves the expression, the gesture, the person.",
+    "label": "black & white",
+    "short": "only what matters",
+    "description": "monochrome with deep contrast and a soft tonal glow. colour falls away and leaves the expression, the gesture, the person.",
     "preview": "",
     "show": false
   }
