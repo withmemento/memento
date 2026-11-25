@@ -20,7 +20,6 @@
   const rich = (str) => esc(str || "").replace(/\*(.+?)\*/g, "<em>$1</em>").replace(/\n/g, "<br>");
   const lookLabel = (id) => (M.looks.find((l) => l.id === id) || {}).label || "";
   const bgLabel = (id) => (M.backgrounds.find((b) => b.id === id) || {}).label || "";
-  const catLabel = (id) => (M.categories.find((c) => c.id === id) || {}).label || "";
   const pad2 = (n) => String(n).padStart(2, "0");
 
   /* ---------- image loading ---------- */
@@ -34,7 +33,10 @@
     if (img.complete && img.naturalWidth) done(); else img.addEventListener("load", done, { once: true });
   }
   function hydrateStatic() {
-    $$("[data-t]").forEach((el) => { const v = get(T, el.dataset.t); if (v != null) el.innerHTML = rich(v); });
+    $$("[data-t]").forEach((el) => {
+      const v = get(T, el.dataset.t); if (v == null) return;
+      el.innerHTML = el.classList.contains("about__story") ? String(v).split(/\n\n+/).map((p) => `<p>${rich(p)}</p>`).join("") : rich(v);
+    });
     $$("img[data-img]").forEach((img) => {
       const p = get(T, img.dataset.img);
       const fig = img.closest("figure");
@@ -49,7 +51,6 @@
     list("#principles", T.about.principles, (x, i) => `<li class="reveal"><span>${roman[i] || i + 1 + "."}</span><h3>${rich(x.title)}</h3><p>${rich(x.text)}</p></li>`);
     list("#features", T.booth.features, (x, i) => `<li class="reveal"><span>${pad2(i + 1)}</span><h3>${rich(x.title)}</h3><p>${rich(x.text)}</p></li>`);
     list("#partner-points", T.partner.points, (x) => `<li class="reveal"><b>${rich(x.title)}</b>${rich(x.text)}</li>`);
-    $("#ticker").innerHTML = (T.hero.ticker || []).map((w) => `<span>${esc(w)}</span>`).join("<i>✦</i>");
   }
 
   /* ---------- contact bindings ---------- */
@@ -58,13 +59,12 @@
   }
   function bindContact() {
     const c = M.contact;
-    $$("[data-wa]").forEach((a) => { a.href = waLink(a.dataset.waKey ? get(T, a.dataset.waKey) : a.dataset.waMsg); a.target = "_blank"; a.rel = "noopener"; });
+    $$("[data-wa]").forEach((a) => { a.href = "waPlain" in a.dataset ? `https://wa.me/${c.whatsappNumber}` : waLink(a.dataset.waKey ? get(T, a.dataset.waKey) : a.dataset.waMsg); a.target = "_blank"; a.rel = "noopener noreferrer"; });
     $$("[data-email]").forEach((a) => { a.href = `mailto:${c.email}${a.dataset.emailSubject ? "?subject=" + encodeURIComponent(a.dataset.emailSubject) : ""}`; });
     $$("[data-email-text]").forEach((s) => (s.textContent = c.email));
     $$("[data-wa-text]").forEach((s) => (s.textContent = c.whatsappDisplay));
     $$("[data-person]").forEach((s) => (s.textContent = c.person));
-    $$("[data-social]").forEach((a) => { a.href = c[a.dataset.social]; a.target = "_blank"; a.rel = "noopener"; });
-    $("#year").textContent = new Date().getFullYear();
+    $$("[data-social]").forEach((a) => { if (c[a.dataset.social]) a.href = c[a.dataset.social]; a.target = "_blank"; a.rel = "noopener noreferrer"; });
   }
 
   /* ---------- header & drawer ---------- */
@@ -89,7 +89,7 @@
       drawer.classList.toggle("is-open", open);
       drawer.setAttribute("aria-hidden", String(!open));
       btn.setAttribute("aria-expanded", String(open));
-      btn.querySelector("span").textContent = open ? "Close" : "Menu";
+      btn.setAttribute("aria-label", open ? "close menu" : "open menu");
       document.body.style.overflow = open ? "hidden" : "";
     };
     btn.addEventListener("click", () => setOpen(!drawer.classList.contains("is-open")));
@@ -145,16 +145,16 @@
       b.setAttribute("aria-checked", String(on));
       b.tabIndex = on ? 0 : -1;
     });
+    if (!$("[role=radio][aria-checked=true]", container)) { const f = $("[role=radio]", container); if (f) f.tabIndex = 0; }
   }
 
   /* ---------- lightbox ---------- */
   const LB = { list: [], i: 0, lastFocus: null };
   function captionFor(item) {
     const parts = [];
-    if (item.categories) parts.push(item.categories.map(catLabel).join(" · "));
     if (item.look) parts.push(lookLabel(item.look));
     if (item.background) parts.push(bgLabel(item.background));
-    const title = item.name || (item.format === "strip" ? "The strip" : bgLabel(item.background) || "Memento");
+    const title = item.name || (item.format === "strip" ? "the strip" : bgLabel(item.background) || "memento");
     return `<em>${esc(title)}</em>${esc(parts.join("  /  "))}`;
   }
   function lbShow(i) {
@@ -165,7 +165,7 @@
     img.classList.add("is-swapping");
     const pre = new Image();
     pre.onload = () => {
-      img.src = pre.src; img.alt = item.alt || "Memento photograph";
+      img.src = pre.src; img.alt = item.alt || "memento photograph";
       requestAnimationFrame(() => img.classList.remove("is-swapping"));
     };
     pre.src = src(item.image);
@@ -213,97 +213,63 @@
     });
   }
 
-  /* ---------- gallery ---------- */
-  const PAGE = 16;
-  const G = { cat: "all", look: "all", bg: null, visible: [], limit: PAGE };
-  const LAND_DESKTOP = [7, 5, 4, 4, 4, 5, 7, 6, 6];
-  const LAND_MOBILE = [6, 3, 3];
+  /* ---------- gallery ----------
+     Two uniform groups, never mixed in one grid:
+       landscape photographs  -> every frame 3:2
+       portrait prints/strips -> every frame 2:3 (image is contained, never cropped) */
+  const G = { look: "original", bg: null, visible: [] };
+  const isPortrait = (g) => g.format === "strip" || (g.h || 0) > (g.w || 0);
 
   function renderFilters() {
-    const catBox = $("#filter-category");
-    const count = (pred) => M.gallery.filter(pred).length;
-    catBox.innerHTML = M.categories.map((c) => {
-      const n = c.id === "all" ? M.gallery.length : count((g) => g.categories.includes(c.id));
-      return `<button class="chip" role="radio" data-id="${c.id}" aria-checked="false">${esc(c.label)}<sup>${n}</sup></button>`;
-    }).join("");
     const lookBox = $("#filter-look");
-    lookBox.innerHTML = [{ id: "all", label: "Every look" }].concat(M.looks)
+    lookBox.innerHTML = M.looks
       .map((l) => `<button class="chip" role="radio" data-id="${l.id}" aria-checked="false">${esc(l.label)}</button>`).join("");
-    radioGroup(catBox, (id) => { G.cat = id; G.limit = PAGE; renderGallery(); });
-    radioGroup(lookBox, (id) => { G.look = id; G.limit = PAGE; renderGallery(); });
-    $("#gallery-more").addEventListener("click", () => { const from = G.limit; G.limit += PAGE; renderGallery(); const t = $$(".tile")[from]; if (t) t.focus({ preventScroll: true }); });
-    $("#gallery-reset").addEventListener("click", () => { G.cat = "all"; G.look = "all"; G.bg = null; renderGallery(); });
+    radioGroup(lookBox, (id) => { G.look = id; renderGallery(); });
+    $("#gallery-reset").addEventListener("click", () => { G.look = "original"; G.bg = null; renderGallery(); });
   }
 
   function filtered() {
     return M.gallery.filter((g) =>
-      (G.cat === "all" || g.categories.includes(G.cat)) &&
       (G.look === "all" || g.look === G.look) &&
       (!G.bg || g.background === G.bg));
   }
 
+  function tileHTML(g, i) {
+    const strip = g.format === "strip";
+    const meta = strip ? "the strip" : bgLabel(g.background) || "memento";
+    return `<figure class="tile${strip ? " tile--strip" : ""}" style="--d:${Math.min(i, 12)}" tabindex="0" role="button"
+        aria-label="open photo ${i + 1}: ${esc(meta)}, ${esc(lookLabel(g.look))}" data-i="${i}">
+      <span class="tile__num">no. ${pad2(i + 1)}</span>
+      <div class="tile__frame"><img alt="${esc(meta)} photograph, ${esc(lookLabel(g.look))}" loading="lazy"></div>
+      <figcaption class="tile__cap"><b>${esc(meta)}</b><span>${esc(lookLabel(g.look))}</span></figcaption>
+    </figure>`;
+  }
+
   function renderGallery() {
-    setChecked($("#filter-category"), G.cat);
     setChecked($("#filter-look"), G.look);
     const box = $("#gallery");
     const all = filtered();
-    const list = all.slice(0, G.limit);
+    const land = all.filter((g) => !isPortrait(g));
+    const port = all.filter(isPortrait);
+    const list = land.concat(port);
     G.visible = list;
-    const more = $("#gallery-more");
-    more.hidden = all.length <= G.limit;
-    more.querySelector("span").textContent = all.length - list.length;
     $("#gallery-count").textContent = all.length;
-    // backdrop tag (set from "Find Your Frame")
+    // backdrop tag (set from "find your frame")
     const countEl = $(".filters__count");
     $$(".bg-tag", countEl).forEach((n) => n.remove());
     if (G.bg) {
       const t = document.createElement("button");
       t.className = "bg-tag chip"; t.style.marginLeft = "10px"; t.style.fontStyle = "normal";
-      t.innerHTML = `${esc(bgLabel(G.bg))} ✕`; t.setAttribute("aria-label", "Remove backdrop filter");
-      t.addEventListener("click", () => { G.bg = null; renderGallery(); });
+      t.innerHTML = `${esc(bgLabel(G.bg))} ✕`; t.setAttribute("aria-label", "remove background filter");
+      t.addEventListener("click", () => { G.bg = null; G.look = "original"; renderGallery(); });
       countEl.appendChild(t);
     }
     $("#gallery-empty").hidden = all.length > 0;
 
-    box.innerHTML = list.map((g, i) => {
-      const meta = g.format === "strip" ? "Strip" : bgLabel(g.background) || "Memento";
-      return `<figure class="tile${g.format === "strip" ? " tile--strip" : ""}" style="--d:${Math.min(i % PAGE, 12)}" tabindex="0" role="button"
-                aria-label="Open photo ${i + 1}: ${esc(g.categories.map(catLabel).join(", "))}, ${esc(lookLabel(g.look))}" data-i="${i}">
-          <span class="tile__num">No. ${pad2(i + 1)}</span>
-          <div class="tile__frame" style="aspect-ratio:${g.w || 3}/${g.h || 2}"><img alt="${esc(catLabel(g.categories[0]))} photograph, ${esc(lookLabel(g.look))}" loading="lazy"></div>
-          <figcaption class="tile__cap"><b>${esc(catLabel(g.categories[0]))}</b><span>${esc(lookLabel(g.look))} · ${esc(meta)}</span></figcaption>
-        </figure>`;
-    }).join("");
-    $$(".tile", box).forEach((t, i) => loadImg($("img", t), list[i].image, "(max-width: 820px) 50vw, 33vw", (w, h) => {
-      const g = list[i];
-      if (!g.w || !g.h) { g.w = w; g.h = h; $(".tile__frame", t).style.aspectRatio = `${w}/${h}`; scheduleLayout(); }
-    }));
-    layoutGallery();
-  }
-
-  let lt; function scheduleLayout() { clearTimeout(lt); lt = setTimeout(layoutGallery, 60); }
-  function layoutGallery() {
-    const box = $("#gallery");
-    const tiles = $$(".tile", box);
-    if (!tiles.length) return;
-    const mobile = window.matchMedia("(max-width: 820px)").matches;
-    const cols = mobile ? 6 : 12;
-    const gap = parseFloat(getComputedStyle(box).columnGap) || 0;
-    const colW = (box.clientWidth - gap * (cols - 1)) / cols;
-    const ROW = 8, CAP = 34, BOTTOM = mobile ? 18 : 28;
-    let land = 0;
-    tiles.forEach((t, i) => {
-      const g = G.visible[i];
-      const gw = g.w || 3, gh = g.h || 2;
-      const portrait = gh > gw;
-      let span;
-      if (mobile) span = portrait ? 3 : LAND_MOBILE[land++ % LAND_MOBILE.length];
-      else span = portrait ? 3 : LAND_DESKTOP[land++ % LAND_DESKTOP.length];
-      const w = colW * span + gap * (span - 1);
-      const h = w * (gh / gw) + CAP + BOTTOM;
-      t.style.gridColumn = `span ${span}`;
-      t.style.gridRowEnd = `span ${Math.ceil(h / ROW)}`;
-    });
+    const group = (cls, items, offset) => items.length
+      ? `<div class="gallery__group gallery__group--${cls}">${items.map((g, i) => tileHTML(g, offset + i)).join("")}</div>` : "";
+    box.innerHTML = group("landscape", land, 0) + group("portrait", port, land.length);
+    $$(".tile", box).forEach((t, i) => loadImg($("img", t), list[i].image, "(max-width: 820px) 50vw, 33vw"));
   }
 
   function initGallery() {
@@ -313,7 +279,6 @@
     const open = (t) => lbOpen(G.visible, +t.dataset.i);
     box.addEventListener("click", (e) => { const t = e.target.closest(".tile"); if (t) open(t); });
     box.addEventListener("keydown", (e) => { if ((e.key === "Enter" || e.key === " ") && e.target.classList.contains("tile")) { e.preventDefault(); open(e.target); } });
-    let rt; window.addEventListener("resize", () => { clearTimeout(rt); rt = setTimeout(layoutGallery, 120); });
   }
 
   function jumpToArchive() {
@@ -329,10 +294,10 @@
 
     optBox.innerHTML = items.map((it, i) => kind === "look"
       ? `<button class="option" role="radio" aria-checked="false" data-id="${it.id}">
-           <span class="option__n">${pad2(i + 1)}</span><span class="option__name">${esc(it.label)}</span><span class="option__short">${esc(it.short)}</span>
+           <span class="option__name">${esc(it.label)}</span>
          </button>`
       : `<button class="swatch" role="radio" aria-checked="false" data-id="${it.id}">
-           <img alt="" loading="lazy" src="${src(it.thumb || it.preview, "sm")}"><span><b>${esc(it.label)}</b><small>${esc(it.short)}</small></span>
+           <img alt="" loading="lazy" src="${src(it.thumb || it.preview, "sm")}"><span><b>${esc(it.label)}</b></span>
          </button>`).join("");
 
     function select(id, initial) {
@@ -342,8 +307,10 @@
       setChecked(optBox, id);
       $("[data-stage-name]", root).textContent = it.label;
       const sh = $("[data-short]", root), de = $("[data-desc]", root);
-      sh.textContent = it.short; de.textContent = it.description;
-      [sh, de].forEach((p) => { p.style.animation = "none"; void p.offsetWidth; p.style.animation = ""; });
+      if (sh && de) {
+        sh.textContent = it.short || ""; de.textContent = it.description || "";
+        [sh, de].forEach((p) => { p.style.animation = "none"; void p.offsetWidth; p.style.animation = ""; });
+      }
 
       const [a, b] = imgs[0].classList.contains("is-active") ? imgs : [imgs[1], imgs[0]];
       b.alt = `${it.label} — example photograph`;
@@ -359,7 +326,7 @@
       if (more) {
         const ex = M.gallery.filter((g) => (kind === "look" ? g.look === id : g.background === id) && norm(g.image) !== norm(it.preview));
         more.innerHTML = ex.slice(0, 4).map((g, i) =>
-          `<button data-k="${i}" aria-label="View example ${i + 1} of ${esc(it.label)}"><img alt="" loading="lazy" src="${src(g.image, "sm")}"></button>`).join("");
+          `<button data-k="${i}" aria-label="view example ${i + 1} of ${esc(it.label)}"><img alt="" loading="lazy" src="${src(g.image, "sm")}"></button>`).join("");
         more.onclick = (e) => { const bt = e.target.closest("button"); if (bt) lbOpen(ex, +bt.dataset.k); };
       }
       if (!initial) root.dataset.selected = id;
@@ -369,7 +336,6 @@
     $("[data-jump]", root).addEventListener("click", (e) => {
       e.preventDefault();
       if (kind === "look") { G.look = current; G.bg = null; } else { G.bg = current; G.look = "all"; }
-      G.cat = "all"; G.limit = PAGE;
       jumpToArchive();
     });
     select(items[0].id, true);
@@ -379,9 +345,9 @@
   function initPrints() {
     const rail = $("#prints-rail");
     rail.innerHTML = M.prints.map((p, i) => `
-      <figure class="print reveal" data-i="${i}" tabindex="0" role="button" aria-label="View ${esc(p.name)}">
+      <figure class="print reveal" data-i="${i}" tabindex="0" role="button" aria-label="view ${esc(p.name)}">
         <div class="print__card"><img alt="${esc(p.name)}" loading="lazy"></div>
-        <figcaption><span class="print__n">No. ${pad2(i + 1)}</span><h3>${esc(p.name)}</h3><p>${esc(p.note)}</p></figcaption>
+        <figcaption><h3>${esc(p.name)}</h3></figcaption>
       </figure>`).join("");
     $$(".print", rail).forEach((f, i) => loadImg($("img", f), M.prints[i].image, "(max-width: 820px) 60vw, 22vw"));
     const open = (f) => lbOpen(M.prints, +f.dataset.i);
@@ -393,14 +359,13 @@
   function initLocations() {
     const box = $("#loc-list");
     box.innerHTML = M.locations.map((l, i) => {
-      const ph = [l.name, l.venue, l.address, l.hours].some((v) => /\[.*\]/.test(v || ""));
       const href = l.maps || waLink("Hi Memento, I'd like to book the booth for an event.");
-      const evCta = `<a class="link-arrow" href="${esc(href)}" target="_blank" rel="noopener">${esc(l.button || "Open in Maps")}</a>`;
-      return `<article class="loc reveal${ph ? " is-placeholder" : ""}">
+      const evCta = `<a class="link-arrow" href="${esc(href)}" target="_blank" rel="noopener">${esc(l.button || "open in maps")}</a>`;
+      return `<article class="loc reveal">
         <span class="loc__n">${pad2(i + 1)}</span>
-        <div><h3 class="loc__name">${esc(l.name)}</h3><p class="loc__venue">${esc([l.venue, l.city].filter(Boolean).join(" · "))}</p>${ph ? '<span class="placeholder-flag">Details to be confirmed</span>' : ""}</div>
-        <p class="loc__addr">${esc(l.address)}</p>
-        <p class="loc__hours"><b>Hours</b><span>${esc(l.hours)}</span></p>
+        <div><h3 class="loc__name">${esc(l.name)}</h3>${l.venue || l.city ? `<p class="loc__venue">${esc([l.venue, l.city].filter(Boolean).join(" · "))}</p>` : ""}</div>
+        ${l.address ? `<p class="loc__addr">${esc(l.address)}</p>` : ""}
+        ${l.hours ? `<p class="loc__hours"><b>hours</b><span>${esc(l.hours)}</span></p>` : ""}
         <div class="loc__act">${evCta}<div class="loc__img"><img alt="" loading="lazy"></div></div>
       </article>`;
     }).join("");
@@ -416,9 +381,7 @@
     T = text;
     M = {
       contact: settings,
-      categories: [{ id: "all", label: "All Moments" }].concat(settings.categories || []),
       gallery: shown(gallery).filter((g) => g.image).map((g) => Object.assign({}, g, {
-        categories: [].concat(g.categories || []),
         background: g.background && g.background !== "none" ? g.background : null,
       })),
       looks: shown(looks).filter((l) => l.preview),
@@ -432,6 +395,7 @@
     try { await loadContent(); }
     catch (e) { console.error("Content failed to load", e); document.body.classList.remove("is-loading"); return; }
     hydrateStatic();
+    bindContact();
     initHeader();
     initLightbox();
     initGallery();
