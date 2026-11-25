@@ -21,12 +21,12 @@ fonts/            Meow Script & Libre Caslon (+ lisensi OFL)
 
 ## Cara edit sehari-hari
 Buka app.pagescms.org → pilih repo → menu kiri:
-- **Galeri (Archive)**: tambah foto (Add), hapus (ikon sampah), atur urutan (drag), ganti kategori/look/backdrop. Mau sembunyikan sementara tanpa hapus → matikan "Tampilkan di website".
+- **Galeri (Archive)**: tambah foto (Add), hapus (ikon sampah), atur urutan (drag), ganti look/backdrop. Mau sembunyikan sementara tanpa hapus → matikan "Tampilkan di website".
 - **Teks & foto per bagian**: semua tulisan & foto di tiap bagian halaman.
   Di kolom judul: `*kata*` = huruf miring merah, tekan Enter = pindah baris.
 - **Find Your Frame — Look / Backdrop**: teks, foto preview, tampil/sembunyi.
   Look **Black & White** sekarang disembunyikan. Untuk menampilkan: isi Foto preview + nyalakan "Tampilkan", lalu di Galeri set look foto B&W-nya ke "Black & White".
-- **Prints / frame**, **Lokasi cabang**, **Kontak & kategori**.
+- **Prints / frame**, **Lokasi cabang**, **Kontak**.
 Klik **Save** → otomatis tersimpan ke GitHub → Cloudflare memperbarui website dalam ±1 menit.
 
 ## Tips foto
@@ -34,5 +34,5 @@ Klik **Save** → otomatis tersimpan ke GitHub → Cloudflare memperbarui websit
 - Kolom lebar/tinggi di galeri boleh dikosongkan, website mengukurnya sendiri.
 
 ## Hal yang butuh edit kode (jarang)
-- Menambah **kategori baru** / **look baru** / **backdrop baru** dengan ID baru: tambahkan juga ID-nya di daftar pilihan `.pages.yml` (bagian gallery → categories/look/background) supaya muncul di dropdown admin.
+- Menambah **look baru** / **backdrop baru** dengan ID baru: tambahkan juga ID-nya di daftar pilihan `.pages.yml` (bagian gallery → look/background) supaya muncul di dropdown admin.
 - Font Anaktoria: taruh `Anaktoria.woff2` di folder `fonts/`, otomatis aktif.
