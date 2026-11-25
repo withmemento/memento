@@ -9,20 +9,16 @@
     "lede": "memento are made for the people you love and the version of yourself you want to archive, forever.",
     "images": [
       {
-        "image": "images/gallery/curtain-solo-02.webp",
-        "caption": "fig. 01 — red curtain"
+        "image": "images/gallery/curtain-solo-02.webp"
       },
       {
-        "image": "images/gallery/marble-wings.webp",
-        "caption": "fig. 02 — white marble"
+        "image": "images/gallery/marble-wings.webp"
       },
       {
-        "image": "images/gallery/curtain-bw-couple.webp",
-        "caption": "fig. 03 — vintage"
+        "image": "images/gallery/curtain-bw-couple.webp"
       },
       {
-        "image": "images/gallery/stars-couple.webp",
-        "caption": "fig. 04 — stars"
+        "image": "images/gallery/stars-couple.webp"
       }
     ]
   },
@@ -93,20 +89,20 @@
     "title": "where to *find us.*"
   },
   "partner": {
-    "label": "work with memento",
+    "label": "create with us!",
     "title": "let’s make room\nfor *more memories.*",
-    "intro": "we partner with cafés, restaurants, lifestyle spaces, brands and event organisers who care about how people feel in their space. a memento booth gives guests a reason to stay longer, and something to take home that carries your name.",
+    "intro": "we partner with cafés, restaurants, spaces, brands and events who care about how people feel in their space. a memento gives people a reason to stay longer, and something to carry home.",
     "points": [
       {
-        "title": "for venues",
+        "title": "venues",
         "text": "a permanent booth that becomes part of your space and your guests’ routine."
       },
       {
-        "title": "for brands",
+        "title": "brands",
         "text": "custom backdrops and frames that put your story into every print."
       },
       {
-        "title": "for events",
+        "title": "events",
         "text": "a pop-up booth for launches, celebrations and private gatherings."
       }
     ],

@@ -151,11 +151,8 @@
   /* ---------- lightbox ---------- */
   const LB = { list: [], i: 0, lastFocus: null };
   function captionFor(item) {
-    const parts = [];
-    if (item.look) parts.push(lookLabel(item.look));
-    if (item.background) parts.push(bgLabel(item.background));
-    const title = item.name || (item.format === "strip" ? "the strip" : bgLabel(item.background) || "memento");
-    return `<em>${esc(title)}</em>${esc(parts.join("  /  "))}`;
+    if (item.name || item.format === "strip") return "";
+    return `<em>${esc(bgLabel(item.background) || "memento")}</em>`;
   }
   function lbShow(i) {
     const n = LB.list.length;
@@ -169,7 +166,7 @@
       requestAnimationFrame(() => img.classList.remove("is-swapping"));
     };
     pre.src = src(item.image);
-    $("#lb-cap").innerHTML = item.note ? `<em>${esc(item.name)}</em>${esc(item.note)}` : captionFor(item);
+    $("#lb-cap").innerHTML = captionFor(item);
     $("#lb-count").textContent = `${pad2(LB.i + 1)} / ${pad2(n)}`;
     // preload neighbours
     [1, -1].forEach((d) => { const nb = LB.list[(LB.i + d + n) % n]; if (nb) new Image().src = src(nb.image); });
@@ -236,12 +233,13 @@
 
   function tileHTML(g, i) {
     const strip = g.format === "strip";
-    const meta = strip ? "the strip" : bgLabel(g.background) || "memento";
+    const meta = strip ? "strip" : bgLabel(g.background) || "memento";
+    const cap = strip ? "" : `<figcaption class="tile__cap"><b>${esc(meta)}</b></figcaption>`;
     return `<figure class="tile${strip ? " tile--strip" : ""}" style="--d:${Math.min(i, 12)}" tabindex="0" role="button"
         aria-label="open photo ${i + 1}: ${esc(meta)}, ${esc(lookLabel(g.look))}" data-i="${i}">
       <span class="tile__num">no. ${pad2(i + 1)}</span>
       <div class="tile__frame"><img alt="${esc(meta)} photograph, ${esc(lookLabel(g.look))}" loading="lazy"></div>
-      <figcaption class="tile__cap"><b>${esc(meta)}</b><span>${esc(lookLabel(g.look))}</span></figcaption>
+      ${cap}
     </figure>`;
   }
 
@@ -253,7 +251,6 @@
     const port = all.filter(isPortrait);
     const list = land.concat(port);
     G.visible = list;
-    $("#gallery-count").textContent = all.length;
     // backdrop tag (set from "find your frame")
     const countEl = $(".filters__count");
     $$(".bg-tag", countEl).forEach((n) => n.remove());
@@ -347,7 +344,6 @@
     rail.innerHTML = M.prints.map((p, i) => `
       <figure class="print reveal" data-i="${i}" tabindex="0" role="button" aria-label="view ${esc(p.name)}">
         <div class="print__card"><img alt="${esc(p.name)}" loading="lazy"></div>
-        <figcaption><h3>${esc(p.name)}</h3></figcaption>
       </figure>`).join("");
     $$(".print", rail).forEach((f, i) => loadImg($("img", f), M.prints[i].image, "(max-width: 820px) 60vw, 22vw"));
     const open = (f) => lbOpen(M.prints, +f.dataset.i);

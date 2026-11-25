@@ -154,7 +154,7 @@ body:not(.is-loading) .veil { opacity: 0; visibility: hidden; }
 .hero__title { font-family: var(--f-display); font-size: clamp(48px, 7.4vw, 118px); line-height: .96; letter-spacing: -.03em; margin: 18px 0 28px; }
 .hero__title em { font-style: italic; }
 .hero__title { text-wrap: balance; }
-.hero__lede { max-width: 30em; font-size: 18px; color: var(--ink-2); }
+.hero__lede { max-width: 30em; font-size: 15px; color: var(--ink-2); }
 
 .hero__archives { display: inline-block; border-bottom: 1px solid currentColor; padding-bottom: 3px; transition: color .3s; }
 .hero__archives:hover { color: var(--red); }
@@ -164,7 +164,6 @@ body:not(.is-loading) .veil { opacity: 0; visibility: hidden; }
 .hc { margin: 0; background: none !important; }
 .hc img { background: var(--grey); }
 .hc img { width: 100%; aspect-ratio: 3 / 2; object-fit: cover; }
-.hc figcaption { font-family: var(--f-display); font-size: 10.5px; letter-spacing: .18em; color: var(--ink-3); margin-top: 8px; }
 
 /* ---------- about ---------- */
 .about__story { max-width: 40em; margin: 0 auto; padding: clamp(8px, 3vw, 40px) 0 0; font-family: var(--f-display); font-size: clamp(20px, 2.1vw, 27px); line-height: 1.75; color: var(--ink); }
@@ -183,6 +182,7 @@ body:not(.is-loading) .veil { opacity: 0; visibility: hidden; }
 .filters__label { flex: 0 0 64px; font-size: 10.5px; color: var(--ink-3); }
 .filters__count { grid-column: 2; grid-row: 1 / span 2; align-self: center; margin: 0; font-family: var(--f-display); font-style: italic; color: var(--ink-2); }
 .filters__count span { font-style: normal; color: var(--red); }
+.filters__count:empty { display: none; }
 .chips { display: flex; gap: 8px; overflow-x: auto; scrollbar-width: none; -webkit-overflow-scrolling: touch; }
 .chips::-webkit-scrollbar { display: none; }
 .chip {
@@ -378,7 +378,6 @@ body.lb-open { overflow: hidden; }
   .hero__grid { grid-template-columns: 1fr; padding-top: 28px; }
   .hero__text { order: 1; }
   .hero__collage { order: 2; margin: 8px 0 24px; gap: 10px; }
-  .hc figcaption { display: none; }
 
   .principles { grid-template-columns: 1fr; margin-top: 64px; }
   .principles li, .principles li + li { border-left: 0; padding: 26px 0 30px; border-bottom: 1px solid var(--line); }
