@@ -3,30 +3,8 @@
   "whatsappDisplay": "+62 821-6491-9776",
   "whatsappNumber": "6282164919776",
   "whatsappMessage": "Hi Memento, I'd like to ask about",
-  "person": "Yasmine",
+  "person": "yasmine",
   "instagram": "https://www.instagram.com/with.memento/",
   "tiktok": "https://www.tiktok.com/@with.memento",
-  "city": "Malang, Indonesia",
-  "categories": [
-    {
-      "id": "solo",
-      "label": "Solo"
-    },
-    {
-      "id": "couples",
-      "label": "Couples"
-    },
-    {
-      "id": "friends",
-      "label": "Best Friends"
-    },
-    {
-      "id": "groups",
-      "label": "Groups"
-    },
-    {
-      "id": "special",
-      "label": "Special Moments"
-    }
-  ]
+  "city": "malang, indonesia"
 }
