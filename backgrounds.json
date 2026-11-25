@@ -1,36 +1,28 @@
 [
   {
     "id": "curtain",
-    "label": "Red Curtain",
-    "short": "The signature",
-    "description": "Deep red velvet folds, lit to glow. Our most recognisable backdrop, with the drama of an old cinema and the intimacy of a closed booth.",
+    "label": "red curtain",
     "preview": "images/gallery/curtain-solo-02.webp",
     "thumb": "images/gallery/curtain-couple.webp",
     "show": true
   },
   {
     "id": "marble",
-    "label": "White Marble",
-    "short": "Light and quiet",
-    "description": "A pale marble wall that keeps every frame bright and clean. Gentle on skin tones, timeless in print.",
+    "label": "white marble",
     "preview": "images/gallery/marble-wings.webp",
     "thumb": "images/gallery/marble-solo-01.webp",
     "show": true
   },
   {
     "id": "stars",
-    "label": "Stars",
-    "short": "Playful by nature",
-    "description": "A field of black stars on white. Graphic, a little rebellious, and made for pulling faces with your favourite people.",
+    "label": "stars",
     "preview": "images/gallery/stars-solo-03.webp",
     "thumb": "images/gallery/stars-solo-01.webp",
     "show": true
   },
   {
     "id": "custom",
-    "label": "Custom for Events",
-    "short": "Designed around you",
-    "description": "For private celebrations and brand events, the backdrop can be shaped around your theme, so every print carries the story of the night.",
+    "label": "custom for events",
     "preview": "images/gallery/event-group.webp",
     "thumb": "images/gallery/event-bw-group.webp",
     "show": true
